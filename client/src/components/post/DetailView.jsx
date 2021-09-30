@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { Edit , Delete } from "@material-ui/icons";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     container: {
-        padding: '0 100px'
+        padding: '0 100px',
+        [theme.breakpoints.down('md')]: {
+            padding:0
+        }
     },
     image: {
         width: '100%',
@@ -19,7 +23,7 @@ const useStyles = makeStyles({
         border: '1px solid #878797'
     },
     heading: {
-        fontSize: 54,
+        fontSize: 39,
         fontWeight: 600,
         textAlign: 'center',
         margin: '50px 0 10px 0',
@@ -27,9 +31,12 @@ const useStyles = makeStyles({
     subheading: {
         color: '#878787',
         display: "flex",
-        margin: '20px 0'
+        margin: '20px 0',
+        [theme.breakpoints.down('md')]: {
+            display: 'block'
+        }
     }
-})
+}));
 
 const DetailView = () => {
     const classes = useStyles();
@@ -42,14 +49,18 @@ const DetailView = () => {
             className={classes.image}
             />
             <Box className={classes.icons}>
-                <Edit className={classes.icon}/>
+                <Link to="/update"><Edit className={classes.icon}/></Link>
                 <Delete className={classes.icon}/>
             </Box>
             <Typography className={classes.heading}>Title of the Blog</Typography>
-            <Box className={classes.container}>
-                <Typography className={classes.}>Author: Pranay Kharabe</Typography>
-                <Typography className={classes.}>22 Sept, 2021</Typography>
+            <Box className={classes.subheading}>
+                <Typography>Author: Pranay Kharabe</Typography>
+                <Typography style={{marginLeft:'auto'}}>22 Sept, 2021</Typography>
             </Box>
+            <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing el from whatever ipsum. tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev ||
+Compiled successfully! tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev ||
+Compiled successfully!tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev ||
+Compiled successfully!</Typography>
         </Box>
         </>
     )

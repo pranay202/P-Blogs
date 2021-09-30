@@ -6,6 +6,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/home/Home";
 import DetailView from "./components/post/DetailView";
+import CreateView from "./components/post/CreateView";
+import UpdateView from "./components/post/UpdateView";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/details' exact component={DetailView} />
+        <Route path='/create' exact component={CreateView} />
+        <Route path='/update' exact component={UpdateView} />
       </Switch>
       </Box>
     </BrowserRouter>
