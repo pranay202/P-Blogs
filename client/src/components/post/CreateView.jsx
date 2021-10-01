@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
 
@@ -35,8 +35,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const initialValues = {
+    title: '',
+    description: '',
+    picture: '',
+    username: 'admin',
+    categories: 'All',
+    date: new Date()
+}
+
 const CreateView = () => {
     const classes = useStyles();
+    const [post, setPost] = useState(); 
     return (
         <Box className={classes.container}>
             <img src="https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80" alt="post" className={classes.image} />
@@ -50,11 +60,17 @@ const CreateView = () => {
                     id="fileInput"
                     style={{ display: "none" }}
                 />
-                <InputBase  name='title' placeholder="Title" className={classes.textfield} />
+                <InputBase 
+                onChange={(e)=>handleChange(e)} 
+                name='title' 
+                placeholder="Title" 
+                className={classes.textfield} 
+                />
                 <Button variant="contained" style={{ backgroundColor: '#474', color: 'white'}}>Publish</Button>
             </FormControl>
 
             <TextareaAutosize
+                onChange={(e)=>handleChange(e)}
                 rowsMin={5}
                 placeholder="Tell your story..."
                 className={classes.textarea}
