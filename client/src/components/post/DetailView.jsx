@@ -64,6 +64,6 @@ Compiled successfully!</Typography>
         </Box>
         </>
     )
-}
+};
 
-export default DetailView
+export default DetailView;
