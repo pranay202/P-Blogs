@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
 
@@ -44,11 +45,12 @@ const initialValues = {
     picture: '',
     username: 'admin',
     categories: 'All',
-    date: new Date()
+    createdDate: new Date()
 }
 
 const CreateView = () => {
     const classes = useStyles();
+    const history = useHistory();
     const [post, setPost] = useState(initialValues);
     
     const handleChange = (e) => {
@@ -57,6 +59,7 @@ const CreateView = () => {
 
     const savePost = async() => {
         await createPost(post);
+        history.push("/");
     }
     
     return (
@@ -83,7 +86,7 @@ const CreateView = () => {
 
             <TextareaAutosize
                 onChange={(e)=>handleChange(e)}
-                rowsMin={5}
+                minRows={5}
                 placeholder="Tell your story..."
                 className={classes.textarea}
                 name='description' 
