@@ -19,7 +19,7 @@ const Posts = () => {
             setPosts(data);
         }
         fetchData();
-    },[search])
+    },[search]);
 
     return (
         posts.map(post => (
