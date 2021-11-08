@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //backend server running PORT
-const URL = 'http://localhost:5000';
+const URL = 'http://localhost:8000';
 
 export const createPost = async (post) => {
     try {
@@ -42,5 +42,13 @@ export const deletePost = async (id) => {
     await axios.delete(`${URL}/delete/${id}`)
   } catch (error) {
     console.log("Error while calling deletePost API",error);
+  }
+}
+
+export const uploadFile = async (data) => {
+  try {
+    return await axios.post(`${URL}/file/upload`, data)
+  } catch (error) {
+    console.log("Error while calling uploading the image",error);
   }
 }
