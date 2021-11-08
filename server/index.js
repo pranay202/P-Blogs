@@ -10,12 +10,13 @@ import Router from "./routes/route.js";
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use('/',Router);
 
-app.listen(5000, () => {
-    console.log("Server is running successfully on port 5000");
+const PORT = 8000;
+app.listen(PORT, () => {
+    console.log(`Server is running successfully on port ${PORT}`);
 });
 
 Connection();
